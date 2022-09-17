@@ -1,0 +1,60 @@
+24 April 05
+
+Created code for accis that puts delays into ps files as well as live.
+Stopped using usleep, since it does not work for short delays.
+Using multiple fills instead.
+
+In PS the multiple fill approach is essential because otherwise, the 
+delay does not work, since it seems there are other threads that 
+happily do math calculations and the rendering waits till it is ready 
+and then does it all at once. The multiple fills stops that, since the
+rendering must be done in the correct order (I guess).
+
+To change the speed of the animation, you can edit the ps entity SF.
+
+Alternatively preset it thus
+
+gs -c /SF 2.5 def -@ plot0001.ps
+
+This causes the animation to take a factor 2.5 longer.
+
+If you use bbget on the animated gs file, then in gv it will only render 
+at the end because the repetitively filled region is outside the frame.
+
+8 Feb 2013
+There's a problem with the vecglx driver and animation.
+Spent considerable time on this. Developed a way to make it work
+using glAccum, but it is too slow to be useful. 
+
+The problem is that the only thing that seems to ensure the display
+actually updates is glXSwapBuffers, and that seems to destroy the back
+buffer. You then can't update the glList if you call it to redraw the 
+back buffer. But if you close it, then you have to start all over again.
+
+
+Shortcomings of the display:
+
+No easy way to see what the magnetic and electrical fields are for the
+particular configuration. 
+
+Minimum. Draw arrows in 3-D indicating fields. To do this in 3-D we need
+the ability to draw 3-D arrows. But accis doesn't currently have this.
+
+No creative use of color. 
+
+Poloidal projection use is a good step forward. Can such be more widely
+used?
+
+14 Feb 2014
+
+In the past month, implemented 3-D arrows, even shaded. 
+Made non-animated the default starting point, because it is overall more
+convenient.
+
+Looking into the animation. There are better ways to implement delays
+and incremental writes in ghostscript. See animtest.ps
+
+The overall question, though is what is the goal of those ps animations?
+They don't seem to be able to be translated into pdf or svg which might
+then become part of a presentation. So one is thus just stuck with gv 
+or gs as the display program.

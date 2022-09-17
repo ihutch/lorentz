@@ -1,0 +1,6 @@
+Case number 7 Coulomb plus Uniform E, x_0(3), v_0(3), dt, nmax, tanim
+7
+-.3 0. 0.
+0. .001 1.
+.01 5000 .00
+

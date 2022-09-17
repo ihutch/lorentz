@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<meta name="GENERATOR" content="TtHgold 3.67">
+ <style type="text/css"> div.p { margin-top: 7pt;}</style>
+ <style type="text/css"><!--
+ td div.comp { margin-top: -0.6ex; margin-bottom: -1ex;}
+ td div.comb { margin-top: -0.6ex; margin-bottom: -.6ex;}
+ td div.hrcomp { line-height: 0.9; margin-top: -0.8ex; margin-bottom: -1ex;}
+ td div.norm {line-height:normal;}
+ span.roman {font-family: serif; font-style: normal; font-weight: normal;} 
+ span.overacc2 {position: relative;  left: .8em; top: -1.2ex;}
+ span.overacc1 {position: relative;  left: .6em; top: -1.2ex;} --></style>
+
+
+<title> LorentzTrack Particle Orbit Code</title>
+ 
+<h1 align="center">LorentzTrack Particle Orbit Code </h1>
+
+<h3 align="center">I.H.Hutchinson </h3>
+    <h2><a name="tth_sEc1">
+1</a>&nbsp;&nbsp;What it does</h2>
+
+<div class="p"><!----></div>
+The code LorentzTrack is a simple fortran code that solves for the
+orbit of a charged particle in specified electric and magnetic fields,
+using a fourth order Runge-Kutta numerical technique. It plots the
+orbit in a 3-D perspective plot with simple animation. The user can
+control the position of the viewer, the initial position and velocity
+of the particle, and choose the field configuration from a list of
+built-in cases.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc2">
+2</a>&nbsp;&nbsp;How to run it</h2>
+
+<div class="p"><!----></div>
+Type in to the terminal the stuff in <tt>fixed&nbsp;width&nbsp;font</tt> below:
+
+<ol type="1">
+<li> Log in to athena on a Sun workstation (the only ones for which the
+program is so far compiled).
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>add&nbsp;22.611j</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>cd&nbsp;/mit/22.611j/particle_orbits</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> <tt>lorentztrack&nbsp;uniform.dat</tt>
+<div class="p"><!----></div>
+</li>
+
+<li> Watch the plot in the graphics window that will pop up.
+<div class="p"><!----></div>
+</li>
+
+<li> To terminate, click in the graphics window.
+<div class="p"><!----></div>
+</li>
+</ol>
+
+<div class="p"><!----></div>
+Here's an example:<a href="toktrack">Figure</a>
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc3">
+3</a>&nbsp;&nbsp;Input and control files</h2>
+
+<div class="p"><!----></div>
+The data files in that directory ending with <tt>.dat</tt> are different
+examples. Replace <tt>uniform.dat</tt> in the above command line with the
+name of the file which contains the case you want. They are simple
+text files that can be read by any editor. The first line is a
+comment/description. 
+
+<div class="p"><!----></div>
+If you want to change the input parameters, copy the data files to
+your own directory and edit them there. You should not be able to
+change the ones in the locker. In addition to the first line, which is
+ignored by the code, there are input numbers for the case (integer)
+the initial position (3 floats) and velocity (3 floats), the step size
+(don't exceed 0.2) the number of steps (integer) and the approximate
+time duration of the animation (seconds, float).
+
+<div class="p"><!----></div>
+If you want to change your view of the plots, edit the file
+<tt>eye.dat</tt>  (again in your own directory, running lorentztrack
+from there). Its three numbers are the x, y, z coordinates of the
+position from which the plot is viewed. The scaling of the normalized
+coordinates that the eye position is specified in is such that the
+cube surrounding the plot, which is centered at the origin, has side
+0.4 units. If you go closer than that, the view will become strange.
+
+<div class="p"><!----></div>
+ <h2><a name="tth_sEc4">
+4</a>&nbsp;&nbsp;Equations and units</h2>
+
+<div class="p"><!----></div>
+The equation solved is the non-relativistic equation of motion for a
+particle with q/m = 1. Typical order of magnitude of the magnetic
+fields is 1, so the cyclotron frequency is thus also of order 1.
+Perpendicular velocities of order 1 therefore give rise to Larmor
+radii of order 1. An electric field of magnitude 1 would give a drift
+velocity of magnitude E/B = 1. That is rather large for comfort, so
+generally we'll use smaller electric fields.
+
+<div class="p"><!----></div>
+The code resides in
+
+<pre>
+/mit/22.611j/particle_orbits/lorentztrack/lorentztrack.f
+
+</pre>
+It is not terribly long; feel free to 
+<a href="lorentztrack.f">examine it</a> or even hack up your
+own version if you like.
+
+<div class="p"><!----></div>
+
+<br /><br /><hr /><small>File translated from
+T<sub><font size="-1">E</font></sub>X
+by <a href="http://hutchinson.belmont.ma.us/tth/">
+T<sub><font size="-1">T</font></sub>Hgold</a>,
+version 3.67.<br />On 24 Apr 2005, 22:15.</small>
+</html>

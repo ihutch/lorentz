@@ -1,0 +1,24 @@
+Coulpert is a case with the combination of a point charge and a
+uniform applied electric field. It required adaptive timesteps to
+get anywhere. 
+
+The behaviour appears to be as follows.
+ 
+If the orbit ellipse starts with major axis perpendicular to the 
+electric field, it remains so. 
+
+As time goes on, the eccentricity evolves so as to have the apogee
+on the side towards which the velocity points when it is on the 
+down-field direction. 
+
+If the orbit starts with the apogee in the other direction, then its
+eccentricity evolves through a circular orbit till it reaches the 
+correct apogee direction.
+
+The eccentricity then increases steadily until the integration fails
+because the orbit moves too close to the point charge.
+
+If the orbit ellipse starts with major axis parallel to the electric
+field, it does not remain so. Instead the apogee precesses towards the
+direction defined above, and its eccentricity likewise increases until
+the integration breaks down.
